@@ -22,7 +22,7 @@
   ],
   "support": {
     "issues": "https://github.com/phalcon/incubator/issues",
-    "source": "https://github.com/phalcon/incubator-mongodb",
+    "source": "https://github.com/phalcon/incubator-validation",
     "forum": "https://forum.phalcon.io"
   },
   "require": {
@@ -32,8 +32,8 @@
   },
   "require-dev": {
     "phalcon/ide-stubs": "^4.0",
-    "vimeo/psalm": "3.6.2",
-    "squizlabs/php_codesniffer": "3.5.1",
+    "vimeo/psalm": "^3.6",
+    "squizlabs/php_codesniffer": "^3.5",
     "codeception/codeception": "^4.1",
     "codeception/module-asserts": "^1.0.0",
     "phpstan/phpstan": "^0.12.18",
