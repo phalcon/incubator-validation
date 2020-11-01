@@ -17,11 +17,11 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Incubator\Validator;
+namespace Phalcon\Incubator\Validation;
 
 use Phalcon\Validation;
-use Phalcon\Validation\Message;
-use Phalcon\Validation\Validator;
+use Phalcon\Messages\Message;
+use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\Exception as ValidationException;
 
 /**
@@ -53,7 +53,7 @@ class CardNumber extends Validator
      * @return bool
      * @throws Exception
      */
-    public function validate(Validation $validation, $attribute)
+    public function validate(Validation $validation, $attribute):bool
     {
         $value = preg_replace(
             '/[^\d]/',

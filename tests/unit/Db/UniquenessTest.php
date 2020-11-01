@@ -1,12 +1,11 @@
 <?php
 
-namespace Phalcon\Test\Validation\Validator\Db;
+namespace Phalcon\Incubator\Validation\Tests\Db\Unit;
 
 use Phalcon\Di;
 use Phalcon\Validation;
 use Codeception\Util\Stub;
-use Phalcon\Validation\Validator\Db\Uniqueness;
-
+use Phalcon\Incubator\Validation\Db\Uniqueness;
 
 /**
  * \Phalcon\Test\Validation\Validator\Db\UniquenessTest
@@ -47,7 +46,8 @@ class UniquenessTest extends \Codeception\Test\Unit
             \Phalcon\Db\Adapter\Pdo::class,
             [
                 'fetchOne' => function ($sql, $fetchMode, $params) {
-                    if ($sql !== 'SELECT COUNT(*) AS count FROM "users" WHERE "login" = ? AND "id" != ?' &&
+                    if (
+                        $sql !== 'SELECT COUNT(*) AS count FROM "users" WHERE "login" = ? AND "id" != ?' &&
                         $sql !== 'SELECT COUNT(*) AS count FROM "users" WHERE "login" = ?'
                     ) {
                         return null;

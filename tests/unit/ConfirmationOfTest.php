@@ -17,11 +17,10 @@
   +------------------------------------------------------------------------+
  */
 
-namespace Phalcon\Test\Validation\Validator;
-
+namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Codeception\Util\Stub;
-use Phalcon\Validation\Validator\ConfirmationOf;
+use Phalcon\Incubator\Validation\ConfirmationOf;
 
 class ConfirmationOfTest extends \Codeception\Test\Unit
 {
@@ -30,8 +29,7 @@ class ConfirmationOfTest extends \Codeception\Test\Unit
         $validation = Stub::make('Phalcon\Validation');
 
         $validator = new ConfirmationOf();
-
-        $this->setExpectedException('Phalcon\Validation\Exception');
+        $this->expectException('Phalcon\Validation\Exception');
 
         $validator->validate($validation, 'confirmation');
     }

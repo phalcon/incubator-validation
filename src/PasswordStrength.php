@@ -17,9 +17,11 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Incubator\Validator;
+namespace Phalcon\Incubator\Validation;
 
 use Phalcon\Validation;
+use Phalcon\Validation\AbstractValidator;
+use Phalcon\Validation\ValidatorInterface;
 
 /**
  * Validates password strength
@@ -34,7 +36,7 @@ use Phalcon\Validation;
  *
  * @package Phalcon\Validation\Validator
  */
-class PasswordStrength extends Validation\Validator
+class PasswordStrength extends AbstractValidator implements ValidatorInterface
 {
     const MIN_VALID_SCORE = 2;
 
@@ -45,7 +47,7 @@ class PasswordStrength extends Validation\Validator
      * @param   string $attribute - validated attribute
      * @return  bool
      */
-    public function validate(Validation $validation, $attribute)
+    public function validate(Validation $validation, $attribute):bool
     {
         $allowEmpty = $this->getOption('allowEmpty');
         $value = $validation->getValue($attribute);

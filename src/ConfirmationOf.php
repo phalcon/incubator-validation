@@ -17,11 +17,13 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Incubator\Validator;
+namespace Phalcon\Incubator\Validation;
 
 use Phalcon\Validation;
-use Phalcon\Validation\Validator;
+use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\Exception as ValidationException;
+use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Messages\Message;
 
 /**
  * Validates confirmation of other field value
@@ -36,7 +38,7 @@ use Phalcon\Validation\Exception as ValidationException;
  *
  * @package Phalcon\Validation\Validator
  */
-class ConfirmationOf extends Validator
+class ConfirmationOf extends AbstractValidator implements ValidatorInterface
 {
 
     /**
@@ -47,7 +49,7 @@ class ConfirmationOf extends Validator
      * @return  bool
      * @throws  \Phalcon\Validation\Exception
      */
-    public function validate(Validation $validation, $attribute)
+    public function validate(Validation $validation, $attribute): bool
     {
         if (!$this->hasOption('origField')) {
             throw new ValidationException('Original field must be set');
@@ -70,7 +72,7 @@ class ConfirmationOf extends Validator
         $message = ($this->hasOption('message') ? $this->getOption('message') : 'Value not confirmed');
 
         $validation->appendMessage(
-            new Validation\Message(
+            new Message(
                 $message,
                 $attribute,
                 'ConfirmationOfValidator'

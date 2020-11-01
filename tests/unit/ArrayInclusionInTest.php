@@ -1,8 +1,9 @@
 <?php
 
-namespace Phalcon\Incubator\Validator;
+namespace Phalcon\Incubator\Validation\Unit;
 
 use Phalcon\Validation;
+use Phalcon\Incubator\Validation\ArrayInclusionIn;
 
 class ArrayInclusionInTest extends \Codeception\Test\Unit
 {

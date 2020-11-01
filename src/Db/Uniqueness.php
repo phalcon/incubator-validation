@@ -17,16 +17,18 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Validation\Validator\Db;
+namespace Phalcon\Incubator\Validation\Db;
+
 
 use Phalcon\Validation\Validator;
-use Phalcon\Validation\Message;
+use Phalcon\Messages\Message;
+use Phalcon\Validation\AbstractValidator;
 use Phalcon\Db\Adapter\Pdo as DbConnection;
 use Phalcon\Validation\Exception as ValidationException;
 use Phalcon\DiInterface;
 use Phalcon\Di;
 use Phalcon\Db;
-use Phalcon\Validation;
+use Phalcon\Validation\ValidatorInterface;
 
 /**
  * Phalcon\Validation\Validator\Db\Uniqueness
@@ -55,7 +57,7 @@ use Phalcon\Validation;
  * \Phalcon\Di::getDefault()->get('db');
  */
 
-class Uniqueness extends Validator
+class Uniqueness extends AbstractValidator implements ValidatorInterface
 {
     /**
      * Database connection
@@ -127,7 +129,7 @@ class Uniqueness extends Validator
      * @param  string $attribute
      * @return boolean
      */
-    public function validate(Validation $validator, $attribute)
+    public function validate(\Phalcon\Validation $validator, $attribute): bool
     {
         $table = $this->db->escapeIdentifier(
             $this->getOption('table')

@@ -17,11 +17,10 @@
   +------------------------------------------------------------------------+
  */
 
-namespace Phalcon\Test\Validation\Validator;
+namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Phalcon\Validation;
-
-use Phalcon\Validation\Validator\PasswordStrength;
+use Phalcon\Incubator\Validation\PasswordStrength;
 
 class PasswordStrengthTest extends \Codeception\Test\Unit
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Phalcon\Incubator\Validator;
+namespace Phalcon\Incubator\Validation;
 
 use Phalcon\Validation;
-use Phalcon\Validation\Message;
-use Phalcon\Validation\Validator;
+use Phalcon\Messages\Message;
+use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\ValidatorInterface;
 
-class AlphaNumericValidator extends Validator implements ValidatorInterface
+class AlphaNumericValidator extends AbstractValidator implements ValidatorInterface
 {
     /**
      * Executes the validation. Allowed options:
@@ -21,7 +21,7 @@ class AlphaNumericValidator extends Validator implements ValidatorInterface
      *
      * @return boolean
      */
-    public function validate(Validation $validator, $attribute)
+    public function validate(Validation $validator, $attribute):bool
     {
         $value = $validator->getValue($attribute);
 

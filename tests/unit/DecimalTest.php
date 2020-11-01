@@ -1,9 +1,9 @@
 <?php
 
-namespace Phalcon\Test\Mvc\Model\Validator;
+namespace Phalcon\Test\Mvc\Model\Unit;
 
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\Decimal;
+use Phalcon\Incubator\Validation\Decimal;
 
 
 /**

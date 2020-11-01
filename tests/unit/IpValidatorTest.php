@@ -1,9 +1,8 @@
 <?php
 
-namespace Phalcon\Test\Validation\Validator;
+namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Phalcon\Validation;
-
 
 /**
  * \Phalcon\Test\Validation\Validator\IpValidatorTest

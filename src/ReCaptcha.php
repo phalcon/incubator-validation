@@ -25,12 +25,12 @@
  *
  * @package Phalcon\Validation\Validator
  */
-namespace Phalcon\Incubator\Validator;
+namespace Phalcon\Incubator\Validation;
 
 use Phalcon\Validation;
 use Phalcon\Http\Request;
-use Phalcon\Validation\Message;
-use Phalcon\Validation\Validator;
+use Phalcon\Messages\Message;
+use Phalcon\Validation\AbstractValidator;
 
 /**
  * Phalcon\Validation\Validator\ReCaptcha
@@ -84,7 +84,7 @@ class ReCaptcha extends Validator
      *
      * @return bool
      */
-    public function validate(Validation $validation, $attribute)
+    public function validate(Validation $validation, $attribute):bool
     {
         $secret   = $this->getOption('secret');
         $value    = $validation->getValue($attribute);

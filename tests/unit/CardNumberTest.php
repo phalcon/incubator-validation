@@ -1,9 +1,9 @@
 <?php
 
-namespace Phalcon\Test\Validation\Validator;
+namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\CardNumber;
+use Phalcon\Incubator\Validation\CardNumber;
 
 /**
  * \Phalcon\Test\Validation\Validator\CardNumberTest
@@ -64,6 +64,6 @@ class CardNumberTest extends \Codeception\Test\Unit
 
     public function providerCards()
     {
-        return include INCUBATOR_FIXTURES . 'Validation/card_number.php';
+        return include codecept_data_dir() . 'fixtures/card_number.php';
     }
 }

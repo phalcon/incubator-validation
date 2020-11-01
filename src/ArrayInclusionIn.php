@@ -1,12 +1,12 @@
 <?php
 
-namespace Phalcon\Incubator\Validator;
+namespace Phalcon\Incubator\Validation;
 
-use Phalcon\Validation\Message;
-use Phalcon\Validation\Validator;
+use Phalcon\Messages\Message;
+use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\ValidatorInterface;
 
-class ArrayInclusionIn extends Validator implements ValidatorInterface
+class ArrayInclusionIn extends AbstractValidator implements ValidatorInterface
 {
 
     /**
@@ -18,14 +18,14 @@ class ArrayInclusionIn extends Validator implements ValidatorInterface
      *
      * @throws \Exception
      */
-    public function validate(\Phalcon\Validation $validation, $attribute)
+    public function validate(\Phalcon\Validation $validator, $attribute): bool
     {
-        $array = $validation->getValue($attribute);
+        $array = $validator->getValue($attribute);
         $domain = $this->getOption('domain');
         $allowEmpty = $this->getOption('allowEmpty');
 
         if ((empty($array) && !$allowEmpty) || empty($domain) || !is_array($array)) {
-            $validation->appendMessage(
+            $validator->appendMessage(
                 new Message(
                     'Invalid argument supplied',
                     $attribute
@@ -42,7 +42,7 @@ class ArrayInclusionIn extends Validator implements ValidatorInterface
                     'Values provided not exist in domain'
                 );
 
-                $validation->appendMessage(
+                $validator->appendMessage(
                     new Message(
                         $message,
                         $attribute

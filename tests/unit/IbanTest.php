@@ -17,11 +17,10 @@
   +------------------------------------------------------------------------+
 */
 
-namespace Phalcon\Test\Validation\Validator;
+namespace Phalcon\Incubator\Validation\Tests\Unit;
 
-
-use Phalcon\Validation\Validator\Iban;
 use Phalcon\Validation;
+use Phalcon\Incubator\Validation\Iban;
 
 class IbanTest extends \Codeception\Test\Unit
 {
@@ -187,14 +186,14 @@ class IbanTest extends \Codeception\Test\Unit
 
     public function providerValidCode()
     {
-        $data = require INCUBATOR_FIXTURES . 'Validation/iban_data.php';
+        $data = require codecept_data_dir() . 'fixtures/iban_data.php';
 
         return $data['iban-codes'];
     }
 
     public function providerInvalidCode()
     {
-        $data = require INCUBATOR_FIXTURES . 'Validation/iban_data.php';
+        $data = require codecept_data_dir() . 'fixtures/iban_data.php';
 
         return $data['iban-error-code'];
     }

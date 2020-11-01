@@ -1,9 +1,9 @@
 <?php
 
-namespace Phalcon\Test\Validation\Validator;
+namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Phalcon\Validation;
-use Phalcon\Validation\Validator\AlphaCompleteValidator;
+use Phalcon\Incubator\Validation\AlphaCompleteValidator;
 
 /**
  * \Phalcon\Test\Validation\Validator\AlphaCompleteValidatorTest
