@@ -1,6 +1,6 @@
 <?php
 
-use Phalcon\Validation\Validator\CardNumber;
+use Phalcon\Incubator\Validation\CardNumber;
 
 return [
     [

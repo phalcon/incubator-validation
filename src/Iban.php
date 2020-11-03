@@ -23,6 +23,7 @@ use Phalcon\Validation;
 use Phalcon\Messages\Message;
 use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Validation\AbstractCombinedFieldsValidator;
 
 /**
  * Validates IBAN Numbers (International Bank Account Numbers)
@@ -42,7 +43,7 @@ use Phalcon\Validation\ValidatorInterface;
  *
  * @package Phalcon\Validation\Validator
  */
-class Iban extends AbstractValidator implements ValidatorInterface
+class Iban extends AbstractCombinedFieldsValidator implements ValidatorInterface
 {
     /**
      * Validation failure message template definitions
@@ -220,20 +221,23 @@ class Iban extends AbstractValidator implements ValidatorInterface
      *
      * @return bool
      */
-    public function validate(Validation $validation, $attribute):bool
+    public function validate(Validation $validation, $attribute): bool
     {
         $messageCode = $this->getErrorMessageCode($validation, $attribute);
         if (!empty($messageCode)) {
             $label = $this->prepareLabel($validation, $attribute);
             $code = $this->prepareCode($attribute);
-            $replacePairs = [":field"=> $label];
+            $replacePairs = [":field" => $label];
 
-            $message = $this->prepareMessage(
-                $validation,
-                $attribute,
-                "Iban",
-                $messageCode
-            );
+            $message = $this->getOption($messageCode);
+
+            if (is_array($message)) {
+                $message = $message[$attribute];
+            }
+
+            if (empty($message)) {
+                $message = $validation->getDefaultMessage('Iban');
+            }
 
             $validation->appendMessage(
                 new Message(

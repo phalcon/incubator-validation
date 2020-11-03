@@ -46,9 +46,7 @@ class IbanTest extends \Codeception\Test\Unit
         );
 
         $validators = $validation->getValidators();
-
-        $validator = $validators[0];
-        $validator = $validator[1];
+        $validator = end($validators['test']);
 
         $validator->setCountryCode($countryCode);
 

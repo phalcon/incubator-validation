@@ -21,6 +21,7 @@ namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Codeception\Util\Stub;
 use Phalcon\Incubator\Validation\ConfirmationOf;
+use Phalcon\Validation;
 
 class ConfirmationOfTest extends \Codeception\Test\Unit
 {
@@ -57,10 +58,9 @@ class ConfirmationOfTest extends \Codeception\Test\Unit
     public function testValidateNotSameAsOrig()
     {
         $validation = Stub::make(
-            'Phalcon\Validation',
+            Validation::class,
             [
                 'getValue'      => Stub::consecutive('val1', 'val2'),
-                'appendMessage' => true,
             ]
         );
 
@@ -102,7 +102,6 @@ class ConfirmationOfTest extends \Codeception\Test\Unit
             'Phalcon\Validation',
             [
                 'getValue'      => Stub::consecutive('', 'val2'),
-                'appendMessage' => true,
             ]
         );
 
@@ -124,7 +123,6 @@ class ConfirmationOfTest extends \Codeception\Test\Unit
             'Phalcon\Validation',
             [
                 'getValue'      => ['value', 'value'],
-                'appendMessage' => true,
             ]
         );
 

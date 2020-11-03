@@ -23,6 +23,7 @@ use Phalcon\Validation;
 use Phalcon\Messages\Message;
 use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\Exception as ValidationException;
+use Phalcon\Validation\ValidatorInterface;
 
 /**
  * Phalcon\Mvc\Model\Validator\CardNumber
@@ -38,7 +39,7 @@ use Phalcon\Validation\Exception as ValidationException;
  * ]));
  * </code>
  */
-class CardNumber extends Validator
+class CardNumber extends AbstractValidator implements ValidatorInterface
 {
     const AMERICAN_EXPRESS  = 0; // 34, 37
     const MASTERCARD        = 1; // 51-55
