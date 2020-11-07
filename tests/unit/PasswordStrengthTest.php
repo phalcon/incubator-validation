@@ -50,10 +50,6 @@ class PasswordStrengthTest extends \Codeception\Test\Unit
                    ->method('getValue')
                    ->willReturn('12345');
 
-        $validation->expects($this->any())
-                   ->method('appendMessage')
-                   ->willReturn(true);
-
         $validator = new PasswordStrength();
 
         $this->assertFalse(
@@ -93,10 +89,6 @@ class PasswordStrengthTest extends \Codeception\Test\Unit
         $validation->expects($this->any())
                    ->method('getValue')
                    ->willReturn('Weak1');
-
-        $validation->expects($this->any())
-                   ->method('appendMessage')
-                   ->willReturn(true);
 
         $validator = new PasswordStrength(
             [
@@ -142,10 +134,6 @@ class PasswordStrengthTest extends \Codeception\Test\Unit
                    ->method('getValue')
                    ->willReturn('');
 
-        $validation->expects($this->any())
-                   ->method('appendMessage')
-                   ->willReturn(true);
-
         $validator = new PasswordStrength(
             [
                 'allowEmpty' => false,
@@ -168,10 +156,6 @@ class PasswordStrengthTest extends \Codeception\Test\Unit
                    ->method('getValue')
                    ->willReturn(['value', 'value']);
 
-        $validation->expects($this->any())
-                   ->method('appendMessage')
-                   ->willReturn(true);
-
         $validator = new PasswordStrength();
 
         $this->assertFalse(
@@ -189,10 +173,6 @@ class PasswordStrengthTest extends \Codeception\Test\Unit
         $validation->expects($this->any())
                    ->method('getValue')
                    ->willReturn('Medium99');
-
-        $validation->expects($this->any())
-                   ->method('appendMessage')
-                   ->willReturn(true);
 
         $validator = new PasswordStrength(
             [

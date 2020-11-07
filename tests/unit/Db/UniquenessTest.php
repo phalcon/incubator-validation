@@ -2,6 +2,8 @@
 
 namespace Phalcon\Incubator\Validation\Tests\Db\Unit;
 
+
+use Phalcon\Db\Adapter\Pdo\AbstractPdo;
 use Phalcon\Di;
 use Phalcon\Validation;
 use Codeception\Util\Stub;
@@ -43,7 +45,7 @@ class UniquenessTest extends \Codeception\Test\Unit
     {
         codecept_debug('getDbStub');
         return Stub::makeEmpty(
-            \Phalcon\Db\Adapter\Pdo::class,
+            AbstractPdo::class,
             [
                 'fetchOne' => function ($sql, $fetchMode, $params) {
                     if (
@@ -65,17 +67,18 @@ class UniquenessTest extends \Codeception\Test\Unit
                 },
                 'escapeIdentifier' => function ($identifier) {
                     return "\"{$identifier}\"";
+                },
+                'getDsnDefaults' => function () {
+                    return '';
                 }
             ]
         );
     }
 
-    /**
-     * @expectedException        \Phalcon\Validation\Exception
-     * @expectedExceptionMessage Validator Uniqueness require connection to database
-     */
     public function testShouldCatchExceptionWhenValidateUniquenessWithoutDbAndDefaultDI()
     {
+        $this->expectException(\Phalcon\Validation\Exception::class);
+        $this->expectExceptionMessage("Validator Uniqueness require connection to database");
         $uniquenessOptions = [
             'table'  => 'users',
             'column' => 'login',
@@ -84,12 +87,10 @@ class UniquenessTest extends \Codeception\Test\Unit
          new Uniqueness($uniquenessOptions);
     }
 
-    /**
-     * @expectedException        \Phalcon\Validation\Exception
-     * @expectedExceptionMessage Validator require column option to be set
-     */
     public function testShouldCatchExceptionWhenValidateUniquenessWithoutColumnOption()
     {
+        $this->expectExceptionMessage("Validator require column option to be set");
+        $this->expectException(\Phalcon\Validation\Exception::class);
         new Uniqueness(
             [
                 'table' => 'users',

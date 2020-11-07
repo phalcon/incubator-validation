@@ -37,9 +37,9 @@ class Decimal extends AbstractValidator implements ValidatorInterface
      * @param string $attribute
      *
      * @return bool
-     * @throws Exception
+     * @throws ValidationException
      */
-    public function validate(Validation $validation, $attribute):bool
+    public function validate(Validation $validation, $attribute): bool
     {
         $value = $validation->getValue($attribute);
         $field = $this->getOption('label');

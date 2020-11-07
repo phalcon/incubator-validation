@@ -2,6 +2,7 @@
 
 namespace Phalcon\Incubator\Validation\Tests\Unit;
 
+use Phalcon\Incubator\Validation\IpValidator;
 use Phalcon\Validation;
 
 /**
@@ -31,7 +32,7 @@ class IpValidatorTest extends \Codeception\Test\Unit
 
         $validation->add(
             'ip',
-            new \Phalcon\Validation\Validator\IpValidator(
+            new IpValidator(
                 [
                     'message' => 'The IP is not valid.',
                 ]
@@ -54,7 +55,7 @@ class IpValidatorTest extends \Codeception\Test\Unit
 
         $validation->add(
             'ip',
-            new \Phalcon\Validation\Validator\IpValidator(
+            new IpValidator(
                 [
                     'message' => 'The IP is not valid.',
                 ]

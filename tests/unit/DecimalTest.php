@@ -25,12 +25,11 @@ use Phalcon\Incubator\Validation\Decimal;
  */
 class DecimalTest extends \Codeception\Test\Unit
 {
-    /**
-     * @expectedException        \Phalcon\Validation\Exception
-     * @expectedExceptionMessage A number of decimal places must be set
-     */
     public function testShouldCatchExceptionWhenMissedPlacesInDecimalValidation()
     {
+        $this->expectExceptionMessage("A number of decimal places must be set");
+        $this->expectException(\Phalcon\Validation\Exception::class);
+
         $validation = new Validation();
 
         $validation->add(
@@ -77,7 +76,7 @@ class DecimalTest extends \Codeception\Test\Unit
         );
 
         $this->assertEquals(
-            'Price must contain valid decimal value',
+            ' must contain valid decimal value',
             $messages[0]->getMessage()
         );
 

@@ -19,6 +19,7 @@
 
 namespace Phalcon\Incubator\Validation;
 
+use Phalcon\Messages\Message;
 use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\ValidatorInterface;
@@ -47,7 +48,7 @@ class PasswordStrength extends AbstractValidator implements ValidatorInterface
      * @param   string $attribute - validated attribute
      * @return  bool
      */
-    public function validate(Validation $validation, $attribute):bool
+    public function validate(Validation $validation, $attribute): bool
     {
         $allowEmpty = $this->getOption('allowEmpty');
         $value = $validation->getValue($attribute);
@@ -65,7 +66,7 @@ class PasswordStrength extends AbstractValidator implements ValidatorInterface
         $message = ($this->hasOption('message') ? $this->getOption('message') : 'Password too weak');
 
         $validation->appendMessage(
-            new Validation\Message(
+            new Message(
                 $message,
                 $attribute,
                 'PasswordStrengthValidator'
