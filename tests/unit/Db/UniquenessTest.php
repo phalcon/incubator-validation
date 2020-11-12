@@ -3,8 +3,7 @@
 namespace Phalcon\Incubator\Validation\Tests\Db\Unit;
 
 
-use Phalcon\Db\Adapter\Pdo\AbstractPdo;
-use Phalcon\Di;
+use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Validation;
 use Codeception\Util\Stub;
 use Phalcon\Incubator\Validation\Db\Uniqueness;
@@ -45,7 +44,7 @@ class UniquenessTest extends \Codeception\Test\Unit
     {
         codecept_debug('getDbStub');
         return Stub::makeEmpty(
-            AbstractPdo::class,
+            Mysql::class,
             [
                 'fetchOne' => function ($sql, $fetchMode, $params) {
                     if (
@@ -68,9 +67,9 @@ class UniquenessTest extends \Codeception\Test\Unit
                 'escapeIdentifier' => function ($identifier) {
                     return "\"{$identifier}\"";
                 },
-                'getDsnDefaults' => function () {
-                    return '';
-                }
+//                'getDsnDefaults' => function () {
+//                    return [];
+//                }
             ]
         );
     }
@@ -91,6 +90,7 @@ class UniquenessTest extends \Codeception\Test\Unit
     {
         $this->expectExceptionMessage("Validator require column option to be set");
         $this->expectException(\Phalcon\Validation\Exception::class);
+
         new Uniqueness(
             [
                 'table' => 'users',
