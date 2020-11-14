@@ -3,7 +3,6 @@
 namespace Phalcon\Incubator\Validation\Tests\Db\Unit;
 
 
-use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\Validation;
 use Codeception\Util\Stub;
 use Phalcon\Incubator\Validation\Db\Uniqueness;
@@ -43,35 +42,18 @@ class UniquenessTest extends \Codeception\Test\Unit
     private function getDbStub()
     {
         codecept_debug('getDbStub');
-        return Stub::makeEmpty(
-            Mysql::class,
-            [
-                'fetchOne' => function ($sql, $fetchMode, $params) {
-                    if (
-                        $sql !== 'SELECT COUNT(*) AS count FROM "users" WHERE "login" = ? AND "id" != ?' &&
-                        $sql !== 'SELECT COUNT(*) AS count FROM "users" WHERE "login" = ?'
-                    ) {
-                        return null;
-                    }
 
-                    if ($params[0] == 'login_taken') {
-                        return [
-                            'count' => 1,
-                        ];
-                    } else {
-                        return [
-                            'count' => 0,
-                        ];
-                    }
-                },
-                'escapeIdentifier' => function ($identifier) {
-                    return "\"{$identifier}\"";
-                },
-//                'getDsnDefaults' => function () {
-//                    return [];
-//                }
-            ]
-        );
+        $adapter = 'Mysql';
+        $class = 'Phalcon\Db\Adapter\Pdo\\' . $adapter;
+        $params = [
+            'host'     => getenv('DATA_MYSQL_HOST'),
+            'username' => getenv('DATA_MYSQL_USER'),
+            'password' => getenv('DATA_MYSQL_PASS'),
+            'dbname'   => getenv('DATA_MYSQL_NAME'),
+            'charset'  => getenv('DATA_MYSQL_CHARSET')
+        ];
+
+        return new $class($params);
     }
 
     public function testShouldCatchExceptionWhenValidateUniquenessWithoutDbAndDefaultDI()
@@ -79,8 +61,8 @@ class UniquenessTest extends \Codeception\Test\Unit
         $this->expectException(\Phalcon\Validation\Exception::class);
         $this->expectExceptionMessage("Validator Uniqueness require connection to database");
         $uniquenessOptions = [
-            'table'  => 'users',
-            'column' => 'login',
+            'table'  => 'co_customers',
+            'column' => 'cst_login',
         ];
 
          new Uniqueness($uniquenessOptions);
@@ -93,7 +75,7 @@ class UniquenessTest extends \Codeception\Test\Unit
 
         new Uniqueness(
             [
-                'table' => 'users',
+                'table' => 'co_customers',
             ],
             $this->getDbStub()
         );
@@ -107,8 +89,8 @@ class UniquenessTest extends \Codeception\Test\Unit
         );
 
         $uniquenessOptions = [
-            'table'  => 'users',
-            'column' => 'login',
+            'table'  => 'co_customers',
+            'column' => 'cst_login',
         ];
 
         $uniqueness = new Uniqueness($uniquenessOptions);
@@ -117,7 +99,7 @@ class UniquenessTest extends \Codeception\Test\Unit
 
         $messages = $this->validation->validate(
             [
-                'login' => 'login_free',
+                'cst_login' => 'login_free',
             ]
         );
 
@@ -127,8 +109,8 @@ class UniquenessTest extends \Codeception\Test\Unit
     public function testShouldValidateAvailableUniqueness()
     {
         $uniquenessOptions = [
-            'table'  => 'users',
-            'column' => 'login',
+            'table'  => 'co_customers',
+            'column' => 'cst_login',
         ];
 
         $uniqueness = new Uniqueness(
@@ -136,11 +118,11 @@ class UniquenessTest extends \Codeception\Test\Unit
             $this->getDbStub()
         );
 
-        $this->validation->add('login', $uniqueness);
+        $this->validation->add('cst_login', $uniqueness);
 
         $messages = $this->validation->validate(
             [
-                'login' => 'login_free',
+                'cst_login' => 'login_free',
             ]
         );
 
@@ -150,8 +132,8 @@ class UniquenessTest extends \Codeception\Test\Unit
     public function testAlreadyTakenUniquenessWithDefaultMessage()
     {
         $uniquenessOptions = [
-            'table'  => 'users',
-            'column' => 'login',
+            'table'  => 'co_customers',
+            'column' => 'cst_login',
         ];
 
         $uniqueness = new Uniqueness(
@@ -159,11 +141,11 @@ class UniquenessTest extends \Codeception\Test\Unit
             $this->getDbStub()
         );
 
-        $this->validation->add('login', $uniqueness);
+        $this->validation->add('cst_login', $uniqueness);
 
         $messages = $this->validation->validate(
             [
-                'login' => 'login_taken',
+                'cst_login' => 'login_taken',
             ]
         );
 
@@ -178,8 +160,8 @@ class UniquenessTest extends \Codeception\Test\Unit
     public function testAlreadyTakenUniquenessWithCustomMessage()
     {
         $uniquenessOptions = [
-            'table' => 'users',
-            'column' => 'login',
+            'table' => 'co_customers',
+            'column' => 'cst_login',
             'message' => 'Login already taken.'
         ];
 
@@ -188,11 +170,11 @@ class UniquenessTest extends \Codeception\Test\Unit
             $this->getDbStub()
         );
 
-        $this->validation->add('login', $uniqueness);
+        $this->validation->add('cst_login', $uniqueness);
 
         $messages = $this->validation->validate(
             [
-                'login' => 'login_taken',
+                'cst_login' => 'login_taken',
             ]
         );
 
