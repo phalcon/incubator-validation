@@ -1,10 +1,9 @@
 <?php
 
-namespace Phalcon\Incubator\Validation\Tests\Db\Unit;
+namespace Phalcon\Incubator\Validation\Tests\Database;
 
-
+use Phalcon\Di;
 use Phalcon\Validation;
-use Codeception\Util\Stub;
 use Phalcon\Incubator\Validation\Db\Uniqueness;
 
 /**
@@ -83,7 +82,9 @@ class UniquenessTest extends \Codeception\Test\Unit
 
     public function testAvailableUniquenessWithDefaultDI()
     {
-        $this->di->set(
+        $di = Di::getDefault();
+
+        $di->set(
             'db',
             $this->getDbStub()
         );

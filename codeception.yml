@@ -8,10 +8,13 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+
+bootstrap: _bootstrap.php
+
 coverage:
     enabled: true
     include:
         - src/*
 params:
     # get params from environment vars
-    #- .env
+    - .env

@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Phalcon\Test\Fixtures\Migrations;
+namespace Phalcon\Incubator\Validation\Test\Fixtures\Migrations;
 
 use PHPUnit\Framework\Assert;
 
@@ -23,11 +23,12 @@ class CustomersMigration extends AbstractMigration
     protected $table = 'co_customers';
 
     /**
-     * @param int|null    $id
-     * @param int         $status
+     * @param int|null $id
+     * @param int $status
      * @param string|null $first
      * @param string|null $last
      *
+     * @param string|null $login
      * @return int
      */
     public function insert(
@@ -70,7 +71,7 @@ create table co_customers
     `cst_status_flag` tinyint(1)   null,
     `cst_name_last`   varchar(100) null,
     `cst_name_first`  varchar(50)  null,
-    `cst_login`  varchar(50)  null UNIQUE,
+    `cst_login`  varchar(50)  null UNIQUE
     
 );
             ",
@@ -87,5 +88,20 @@ create index co_customers_cst_name_first_index
     on `co_customers` (`cst_name_first`);
             ",
         ];
+    }
+
+    protected function getSqlSqlite(): array
+    {
+        return [];
+    }
+
+    protected function getSqlPgsql(): array
+    {
+        return [];
+    }
+
+    protected function getSqlSqlsrv(): array
+    {
+        return [];
     }
 }

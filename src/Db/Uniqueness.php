@@ -19,15 +19,13 @@
 
 namespace Phalcon\Incubator\Validation\Db;
 
-
-use Phalcon\Validation\Validator;
+use Phalcon\Di\DiInterface;
 use Phalcon\Messages\Message;
 use Phalcon\Validation\AbstractValidator;
-use Phalcon\Db\Adapter\Pdo as DbConnection;
+use Phalcon\Db\Adapter\Pdo\AbstractPdo as DbConnection;
 use Phalcon\Validation\Exception as ValidationException;
-use Phalcon\DiInterface;
+use Phalcon\Db\Enum as Db;
 use Phalcon\Di;
-use Phalcon\Db;
 use Phalcon\Validation\ValidatorInterface;
 
 /**
@@ -61,15 +59,15 @@ class Uniqueness extends AbstractValidator implements ValidatorInterface
 {
     /**
      * Database connection
-     * @var \Phalcon\Db\Adapter\Pdo
+     * @var \Phalcon\Db\Adapter\Pdo\AbstractPdo
      */
     private $db;
 
     /**
      * Class constructor.
      *
-     * @param  array $options
-     * @param  DbConnection  $db
+     * @param array $options
+     * @param DbConnection|null $db
      * @throws ValidationException
      */
     public function __construct(array $options = [], DbConnection $db = null)
@@ -84,7 +82,6 @@ class Uniqueness extends AbstractValidator implements ValidatorInterface
                 $db = $di->get('db');
             }
         }
-
         if (!$db instanceof DbConnection) {
             throw new ValidationException(
                 'Validator Uniqueness require connection to database'

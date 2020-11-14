@@ -1,0 +1,9 @@
+actor: DatabaseTester
+modules:
+  enabled:
+    - Phalcon4:
+        bootstrap: 'tests/_config/bootstrap.php'
+    - Asserts
+    - Filesystem
+    - Helper\Database
+    - Helper\Unit
