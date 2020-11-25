@@ -43,14 +43,17 @@ class UniquenessTest extends \Codeception\Test\Unit
         codecept_debug('getDbStub');
 
         $adapter = 'Mysql';
-        $class = 'Phalcon\Db\Adapter\Pdo\\' . $adapter;
-        $params = [
+        $class   = 'Phalcon\Db\Adapter\Pdo\\' . $adapter;
+        $params  = [
             'host'     => getenv('DATA_MYSQL_HOST'),
             'username' => getenv('DATA_MYSQL_USER'),
             'password' => getenv('DATA_MYSQL_PASS'),
             'dbname'   => getenv('DATA_MYSQL_NAME'),
-            'charset'  => getenv('DATA_MYSQL_CHARSET')
+            'charset'  => getenv('DATA_MYSQL_CHARSET'),
+            'port'     => getenv('DATA_MYSQL_PORT')
         ];
+
+        print_r($params);
 
         return new $class($params);
     }
@@ -64,7 +67,7 @@ class UniquenessTest extends \Codeception\Test\Unit
             'column' => 'cst_login',
         ];
 
-         new Uniqueness($uniquenessOptions);
+        new Uniqueness($uniquenessOptions);
     }
 
     public function testShouldCatchExceptionWhenValidateUniquenessWithoutColumnOption()
@@ -161,8 +164,8 @@ class UniquenessTest extends \Codeception\Test\Unit
     public function testAlreadyTakenUniquenessWithCustomMessage()
     {
         $uniquenessOptions = [
-            'table' => 'co_customers',
-            'column' => 'cst_login',
+            'table'   => 'co_customers',
+            'column'  => 'cst_login',
             'message' => 'Login already taken.'
         ];
 
