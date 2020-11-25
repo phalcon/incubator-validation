@@ -74,7 +74,7 @@ jobs:
           DATA_MYSQL_PORT: ${{ job.services.mysql.ports['3306'] }}
           DATA_MYSQL_USER: root
         if: success()
-        run: vendor/bin/codecept run --coverage-xml=coverage-${{ matrix.php-versions }}.xml
+        run: vendor/bin/codecept run --coverage-xml=coverage-${{ matrix.php-versions }}.xml --env mysql
 
       - name: Upload coverage to Codecov
         if: success()
