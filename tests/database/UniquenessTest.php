@@ -146,7 +146,7 @@ class UniquenessTest extends \Codeception\Test\Unit
 
         $this->validation->add('cst_login', $uniqueness);
 
-        $migration = new CustomersMigration( $this->getDbStub());
+        $migration = new CustomersMigration( $this->getDbStub()->getInternalHandler());
         $migration->insert(1, 1, 'jeremy', 'past', 'login_taken');
 
         $messages = $this->validation->validate(
