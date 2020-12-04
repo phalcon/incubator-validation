@@ -87,6 +87,13 @@ create index co_customers_cst_name_last_index
 create index co_customers_cst_name_first_index
     on `co_customers` (`cst_name_first`);
             ",
+            "
+insert into co_customers (
+    cst_id, cst_status_flag, cst_name_first, cst_name_last, cst_login
+) values (
+    1, 1, 'jeremy', 'past', 'login_taken'
+)
+            "
         ];
     }
 

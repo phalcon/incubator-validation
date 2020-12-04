@@ -53,8 +53,6 @@ class UniquenessTest extends \Codeception\Test\Unit
             'port'     => getenv('DATA_MYSQL_PORT')
         ];
 
-        print_r($params);
-
         return new $class($params);
     }
 
