@@ -74,6 +74,10 @@ class Uniqueness extends AbstractValidator implements ValidatorInterface
     {
         parent::__construct($options);
 
+        if(!empty($options['message'])){
+            $this->setOption('message', $options['message']);
+        }
+
         if (!$db) {
             // try to get db instance from default Dependency Injection
             $di = Di::getDefault();
