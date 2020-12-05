@@ -113,7 +113,7 @@ class ReCaptcha extends AbstractValidator implements ValidatorInterface
             );
 
             $response = curl_exec($curl);
-            if(true === is_string($response)){
+            if (true === is_string($response)) {
                 $response = json_decode(
                     $response,
                     true

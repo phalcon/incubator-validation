@@ -108,7 +108,7 @@ class CardNumber extends AbstractValidator implements ValidatorInterface
             if (($i % 2) == 0) {
                 $temp = $value[$i];
             } else {
-                if(true === is_numeric($value[$i])){
+                if (true === is_numeric($value[$i])) {
                     $temp = $value[$i] * 2;
                 }
 
@@ -117,7 +117,7 @@ class CardNumber extends AbstractValidator implements ValidatorInterface
                 }
             }
 
-            if(true === is_numeric($temp)){
+            if (true === is_numeric($temp)) {
                 $checkSum += $temp;
             }
         }
