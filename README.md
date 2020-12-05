@@ -1,4 +1,10 @@
-# Phalcon\Validation\Validator
+# Phalcon\Incubator\Validation
+
+[![Discord](https://img.shields.io/discord/310910488152375297?label=Discord)](http://phalcon.link/discord)
+[![Packagist Version](https://img.shields.io/packagist/v/phalcon/incubator-validation)](https://packagist.org/packages/phalcon/incubator-validation)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/phalcon/incubator-validation)](https://packagist.org/packages/phalcon/incubator-validation)
+[![codecov](https://codecov.io/gh/phalcon/incubator-validation/branch/master/graph/badge.svg)](https://codecov.io/gh/phalcon/incubator-validation)
+[![Packagist](https://img.shields.io/packagist/dd/phalcon/incubator-validation)](https://packagist.org/packages/phalcon/incubator-validation/stats)
 
 ## The reCAPTCHA Validator
 
