@@ -39,7 +39,7 @@ use Phalcon\Validation\ValidatorInterface;
  */
 class PasswordStrength extends AbstractValidator implements ValidatorInterface
 {
-    const MIN_VALID_SCORE = 2;
+    public const MIN_VALID_SCORE = 2;
 
     /**
      * Value validation

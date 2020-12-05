@@ -236,7 +236,7 @@ class Iban extends AbstractCombinedFieldsValidator implements ValidatorInterface
             }
 
             if (empty($message)) {
-                $message = $validation->getDefaultMessage('Iban');
+                $message = $this->getOption('message');
             }
 
             if (empty($code)) {

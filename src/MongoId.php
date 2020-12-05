@@ -21,16 +21,18 @@ namespace Phalcon\Incubator\Validation;
 
 use MongoId as Id;
 use Phalcon\Validation;
+use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\Validator;
 use Phalcon\Validation\Message;
 use Phalcon\Validation\Exception as ValidationException;
+use Phalcon\Validation\ValidatorInterface;
 
 /**
  * MongoId validator
  *
  * @package Phalcon\Validation\Validator
  */
-class MongoId extends Validator
+class MongoId extends AbstractValidator implements ValidatorInterface
 {
     /**
      * @param Validation $validation
@@ -38,20 +40,20 @@ class MongoId extends Validator
      * @return bool
      * @throws ValidationException
      */
-    public function validate(Validation $validation, $attribute):bool
+    public function validate(Validation $validator, $attribute): bool
     {
         if (!extension_loaded('mongo')) {
             throw new ValidationException('Mongo extension is not available');
         }
 
-        $value = $validation->getValue($attribute);
+        $value = $validator->getValue($attribute);
         $allowEmpty = $this->hasOption('allowEmpty');
         $result = ($allowEmpty && empty($value)) ? true : Id::isValid($value);
 
         if (!$result) {
             $message = ($this->hasOption('message')) ? $this->getOption('message') : 'MongoId is not valid';
 
-            $validation->appendMessage(
+            $validator->appendMessage(
                 new Message(
                     $message,
                     $attribute,

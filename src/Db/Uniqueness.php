@@ -74,7 +74,7 @@ class Uniqueness extends AbstractValidator implements ValidatorInterface
     {
         parent::__construct($options);
 
-        if(!empty($options['message'])){
+        if (!empty($options['message'])) {
             $this->setOption('message', $options['message']);
         }
 

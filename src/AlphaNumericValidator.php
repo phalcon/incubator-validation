@@ -21,7 +21,7 @@ class AlphaNumericValidator extends AbstractValidator implements ValidatorInterf
      *
      * @return boolean
      */
-    public function validate(Validation $validator, $attribute):bool
+    public function validate(Validation $validator, $attribute): bool
     {
         $value = $validator->getValue($attribute);
 

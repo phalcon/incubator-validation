@@ -25,10 +25,11 @@
  *
  * @package Phalcon\Validation\Validator
  */
+
 namespace Phalcon\Incubator\Validation;
 
 use Phalcon\Validation;
-use Phalcon\Http\Request;
+use Phalcon\Validation\ValidatorInterface;
 use Phalcon\Messages\Message;
 use Phalcon\Validation\AbstractValidator;
 
@@ -57,12 +58,12 @@ use Phalcon\Validation\AbstractValidator;
  * @link https://developers.google.com/recaptcha/intro
  * @package Phalcon\Validation\Validator
  */
-class ReCaptcha extends Validator
+class ReCaptcha extends AbstractValidator implements ValidatorInterface
 {
     /**
      * API request URL
      */
-    const RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify';
+    public const RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify';
 
     /**
      * Response error code reference
@@ -84,11 +85,11 @@ class ReCaptcha extends Validator
      *
      * @return bool
      */
-    public function validate(Validation $validation, $attribute):bool
+    public function validate(Validation $validator, $attribute): bool
     {
         $secret   = $this->getOption('secret');
-        $value    = $validation->getValue($attribute);
-        $request  = $validation->getDI()->get('request');
+        $value    = $validator->getValue($attribute);
+        $request  = $validator->getDI()->get('request');
 
         if ($this->hasOption('ip')) {
             $remoteIp = $this->getOption('ip');
@@ -111,15 +112,19 @@ class ReCaptcha extends Validator
                 ]
             );
 
-            $response = json_decode(
-                curl_exec($curl),
-                true
-            );
+            $response = curl_exec($curl);
+            if(true === is_string($response)){
+                $response = json_decode(
+                    $response,
+                    true
+                );
+            }
 
             curl_close($curl);
         }
 
-        if (empty($response['success'])
+        if (
+            empty($response['success'])
             || ($this->hasOption('score')
                 && $this->getOption('score') > $response['score'])
             || ($this->hasOption('action')
@@ -127,7 +132,7 @@ class ReCaptcha extends Validator
         ) {
             $label = $this->getOption('label');
             if (empty($label)) {
-                $label = $validation->getLabel($attribute);
+                $label = $validator->getLabel($attribute);
             }
 
             $message      = $this->getOption('message');
@@ -138,10 +143,10 @@ class ReCaptcha extends Validator
             }
 
             if (empty($message)) {
-                $message = $validation->getDefaultMessage('ReCaptcha');
+                $message = $this->getOption('message');
             }
 
-            $validation->appendMessage(
+            $validator->appendMessage(
                 new Message(
                     strtr($message, $replacePairs),
                     $attribute,
