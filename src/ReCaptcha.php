@@ -80,7 +80,7 @@ class ReCaptcha extends AbstractValidator implements ValidatorInterface
     /**
      * {@inheritdoc}
      *
-     * @param Validation $validation
+     * @param Validation $validator
      * @param string     $attribute
      *
      * @return bool

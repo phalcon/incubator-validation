@@ -23,7 +23,7 @@ use MongoId as Id;
 use Phalcon\Validation;
 use Phalcon\Validation\AbstractValidator;
 use Phalcon\Validation\Validator;
-use Phalcon\Validation\Message;
+use Phalcon\Messages\Message;
 use Phalcon\Validation\Exception as ValidationException;
 use Phalcon\Validation\ValidatorInterface;
 
@@ -35,8 +35,9 @@ use Phalcon\Validation\ValidatorInterface;
 class MongoId extends AbstractValidator implements ValidatorInterface
 {
     /**
-     * @param Validation $validation
-     * @param string $attribute
+     * @param Validation $validator
+     * @param string     $attribute
+     *
      * @return bool
      * @throws ValidationException
      */

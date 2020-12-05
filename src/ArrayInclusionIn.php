@@ -12,11 +12,11 @@ class ArrayInclusionIn extends AbstractValidator implements ValidatorInterface
     /**
      * Executes the validation
      *
-     * @param \Phalcon\Validation $validation
-     * @param string $attribute
+     * @param \Phalcon\Validation $validator
+     * @param string              $attribute
+     *
      * @return bool
      *
-     * @throws \Exception
      */
     public function validate(\Phalcon\Validation $validator, $attribute): bool
     {
