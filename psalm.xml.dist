@@ -10,6 +10,7 @@
         <directory name="src/" />
         <ignoreFiles>
             <directory name="vendor" />
+            <file name="vendor/symfony/polyfill-mbstring/bootstrap80.php" />
         </ignoreFiles>
     </projectFiles>
 
@@ -30,13 +31,13 @@
         <MissingReturnType errorLevel="info" />
         <MissingPropertyType errorLevel="info" />
         <InvalidDocblock errorLevel="info" />
-        <MisplacedRequiredParam errorLevel="info" />
 
         <PropertyNotSetInConstructor errorLevel="info" />
         <MissingClosureParamType errorLevel="info" />
         <MissingParamType errorLevel="info" />
 
         <RedundantCondition errorLevel="info" />
+        <RedundantCastGivenDocblockType errorLevel="info" />
 
         <DocblockTypeContradiction errorLevel="info" />
 
@@ -46,7 +47,6 @@
 
         <MoreSpecificReturnType errorLevel="info" />
         <LessSpecificReturnStatement errorLevel="info" />
-        <TypeCoercion errorLevel="info" />
 
         <PossiblyInvalidPropertyAssignmentValue errorLevel="info" />
         <PossiblyNullArgument errorLevel="info" />
