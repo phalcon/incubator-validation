@@ -76,7 +76,7 @@ class DecimalTest extends \Codeception\Test\Unit
         );
 
         $this->assertEquals(
-            ' must contain valid decimal value',
+            'Price must contain valid decimal value',
             $messages[0]->getMessage()
         );
 
