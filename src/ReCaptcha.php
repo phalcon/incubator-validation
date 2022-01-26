@@ -30,7 +30,7 @@ namespace Phalcon\Incubator\Validation;
 
 use Phalcon\Filter\Validation;
 use Phalcon\Filter\Validation\ValidatorInterface;
-use Phalcon\Filter\Messages\Message;
+use Phalcon\Messages\Message;
 use Phalcon\Filter\Validation\AbstractValidator;
 
 /**

@@ -44,7 +44,7 @@ class PasswordStrength extends AbstractValidator implements ValidatorInterface
     /**
      * Value validation
      *
-     * @param   \Phalcon\Validation $validation - validation object
+     * @param   Validation $validation - validation object
      * @param   string $attribute - validated attribute
      * @return  bool
      */
