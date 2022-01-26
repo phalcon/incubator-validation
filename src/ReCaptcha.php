@@ -28,10 +28,10 @@
 
 namespace Phalcon\Incubator\Validation;
 
-use Phalcon\Validation;
-use Phalcon\Validation\ValidatorInterface;
-use Phalcon\Messages\Message;
-use Phalcon\Validation\AbstractValidator;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\ValidatorInterface;
+use Phalcon\Filter\Messages\Message;
+use Phalcon\Filter\Validation\AbstractValidator;
 
 /**
  * Phalcon\Validation\Validator\ReCaptcha

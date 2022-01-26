@@ -21,12 +21,13 @@ namespace Phalcon\Incubator\Validation\Db;
 
 use Phalcon\Di\DiInterface;
 use Phalcon\Messages\Message;
-use Phalcon\Validation\AbstractValidator;
+use Phalcon\Filter\Validation\AbstractValidator;
 use Phalcon\Db\Adapter\Pdo\AbstractPdo as DbConnection;
-use Phalcon\Validation\Exception as ValidationException;
+use Phalcon\Filter\Validation\Exception as ValidationException;
 use Phalcon\Db\Enum as Db;
-use Phalcon\Di;
-use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Di\Di;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\ValidatorInterface;
 
 /**
  * Phalcon\Validation\Validator\Db\Uniqueness
@@ -126,11 +127,11 @@ class Uniqueness extends AbstractValidator implements ValidatorInterface
     /**
      * Executes the uniqueness validation
      *
-     * @param  \Phalcon\Validation $validator
+     * @param  Validation $validator
      * @param  string $attribute
      * @return boolean
      */
-    public function validate(\Phalcon\Validation $validator, $attribute): bool
+    public function validate(Validation $validator, $attribute): bool
     {
         $table = $this->db->escapeIdentifier(
             $this->getOption('table')

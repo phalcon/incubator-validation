@@ -2,10 +2,11 @@
 
 namespace Phalcon\Incubator\Validation\Tests\Database;
 
-use Phalcon\Di;
+use Phalcon\Di\Di;
 use Phalcon\Incubator\Validation\Test\Fixtures\Migrations\CustomersMigration;
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 use Phalcon\Incubator\Validation\Db\Uniqueness;
+use Phalcon\Filter\Validation\Exception;
 
 /**
  * \Phalcon\Test\Validation\Validator\Db\UniquenessTest
@@ -59,7 +60,7 @@ class UniquenessTest extends \Codeception\Test\Unit
 
     public function testShouldCatchExceptionWhenValidateUniquenessWithoutDbAndDefaultDI()
     {
-        $this->expectException(\Phalcon\Validation\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage("Validator Uniqueness require connection to database");
         $uniquenessOptions = [
             'table'  => 'co_customers',
@@ -72,7 +73,7 @@ class UniquenessTest extends \Codeception\Test\Unit
     public function testShouldCatchExceptionWhenValidateUniquenessWithoutColumnOption()
     {
         $this->expectExceptionMessage("Validator require column option to be set");
-        $this->expectException(\Phalcon\Validation\Exception::class);
+        $this->expectException(Exception::class);
 
         new Uniqueness(
             [
@@ -146,7 +147,7 @@ class UniquenessTest extends \Codeception\Test\Unit
 
         $this->validation->add('cst_login', $uniqueness);
 
-        $migration = new CustomersMigration( $this->getDbStub()->getInternalHandler());
+        $migration = new CustomersMigration($this->getDbStub()->getInternalHandler());
         $migration->insert(1, 1, 'jeremy', 'past', 'login_taken');
 
         $messages = $this->validation->validate(

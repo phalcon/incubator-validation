@@ -2,7 +2,7 @@
 
 namespace Phalcon\Incubator\Validation\Tests\Unit;
 
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 use Phalcon\Incubator\Validation\NumericValidator;
 
 /**
@@ -294,7 +294,7 @@ class NumericValidatorTest extends \Codeception\Test\Unit
         $messages = $validation->validate($data);
 
         $this->assertCount(
-            1,
+            2,
             $messages
         );
     }

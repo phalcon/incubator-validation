@@ -2,7 +2,7 @@
 
 namespace Phalcon\Incubator\Validation\Tests\Unit;
 
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 use Phalcon\Incubator\Validation\AlphaCompleteValidator;
 
 /**
@@ -24,7 +24,6 @@ use Phalcon\Incubator\Validation\AlphaCompleteValidator;
  */
 class AlphaCompleteValidatorTest extends \Codeception\Test\Unit
 {
-
     public function testAlphaCompleteValidatorOk()
     {
         $data['text'] = "0123456789 abc ñ () [] ' \" _ !? .,:;";

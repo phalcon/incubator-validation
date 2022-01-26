@@ -19,11 +19,11 @@
 
 namespace Phalcon\Incubator\Validation;
 
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 use Phalcon\Messages\Message;
-use Phalcon\Validation\AbstractValidator;
-use Phalcon\Validation\Exception as ValidationException;
-use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Filter\Validation\AbstractValidator;
+use Phalcon\Filter\Validation\Exception as ValidationException;
+use Phalcon\Filter\Validation\ValidatorInterface;
 
 /**
  * Phalcon\Mvc\Model\Validator\CardNumber

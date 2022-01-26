@@ -19,10 +19,10 @@
 
 namespace Phalcon\Incubator\Validation;
 
-use Phalcon\Validation;
-use Phalcon\Validation\AbstractValidator;
-use Phalcon\Validation\Exception as ValidationException;
-use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\AbstractValidator;
+use Phalcon\Filter\Validation\Exception as ValidationException;
+use Phalcon\Filter\Validation\ValidatorInterface;
 use Phalcon\Messages\Message;
 
 /**
@@ -44,10 +44,10 @@ class ConfirmationOf extends AbstractValidator implements ValidatorInterface
     /**
      * Value validation
      *
-     * @param   \Phalcon\Validation $validation - validation object
+     * @param   \Phalcon\Filter\Validation $validation - validation object
      * @param   string $attribute - validated attribute
      * @return  bool
-     * @throws  \Phalcon\Validation\Exception
+     * @throws  \Phalcon\Filter\Validation\Exception
      */
     public function validate(Validation $validation, $attribute): bool
     {

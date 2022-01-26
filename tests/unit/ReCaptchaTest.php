@@ -15,7 +15,7 @@ namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Codeception\Test\Unit;
 use Phalcon\Incubator\Validation\ReCaptcha;
-use Phalcon\Validation\AbstractValidator;
+use Phalcon\Filter\Validation\AbstractValidator;
 
 final class ReCaptchaTest extends Unit
 {

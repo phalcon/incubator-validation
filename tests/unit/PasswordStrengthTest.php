@@ -19,7 +19,7 @@
 
 namespace Phalcon\Incubator\Validation\Tests\Unit;
 
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 use Phalcon\Incubator\Validation\PasswordStrength;
 
 class PasswordStrengthTest extends \Codeception\Test\Unit
