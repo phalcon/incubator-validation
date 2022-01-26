@@ -9,7 +9,6 @@ use Phalcon\Filter\Validation;
 
 class ArrayInclusionIn extends AbstractValidator implements ValidatorInterface
 {
-
     /**
      * Executes the validation
      *
