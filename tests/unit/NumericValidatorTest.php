@@ -283,7 +283,7 @@ class NumericValidatorTest extends \Codeception\Test\Unit
                 [
                     'allowFloat'     => true,                                         // Optional, default: false
                     'min'            => 2,                                            // Optional
-                    'max'            => 10,                                           // Optional
+                    'max'            => 9,                                           // Optional
                     'message'        => 'Only numeric (0-9) characters are allowed.', // Optional
                     'messageMinimum' => 'The value must be at least 2',               // Optional
                     'messageMaximum' => 'The value must be lower than 10',            // Optional
