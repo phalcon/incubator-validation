@@ -294,7 +294,7 @@ class NumericValidatorTest extends \Codeception\Test\Unit
         $messages = $validation->validate($data);
 
         $this->assertCount(
-            2,
+            1,
             $messages
         );
     }
