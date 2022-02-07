@@ -2,7 +2,7 @@
 
 namespace Phalcon\Incubator\Validation\Unit;
 
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 use Phalcon\Incubator\Validation\ArrayInclusionIn;
 
 class ArrayInclusionInTest extends \Codeception\Test\Unit

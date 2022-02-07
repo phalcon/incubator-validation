@@ -21,16 +21,16 @@ namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Codeception\Util\Stub;
 use Phalcon\Incubator\Validation\ConfirmationOf;
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 
 class ConfirmationOfTest extends \Codeception\Test\Unit
 {
     public function testValidateExceptionWithoutOrigField()
     {
-        $validation = Stub::make('Phalcon\Validation');
+        $validation = Stub::make('Phalcon\Filter\Validation');
 
         $validator = new ConfirmationOf();
-        $this->expectException('Phalcon\Validation\Exception');
+        $this->expectException('Phalcon\Filter\Validation\Exception');
 
         $validator->validate($validation, 'confirmation');
     }
@@ -38,7 +38,7 @@ class ConfirmationOfTest extends \Codeception\Test\Unit
     public function testValidateSameAsOrig()
     {
         $validation = Stub::make(
-            'Phalcon\Validation',
+            'Phalcon\Filter\Validation',
             [
                 'getValue' => 'value',
             ]
@@ -78,7 +78,7 @@ class ConfirmationOfTest extends \Codeception\Test\Unit
     public function testValidateAllowEmpty()
     {
         $validation = Stub::make(
-            'Phalcon\Validation',
+            'Phalcon\Filter\Validation',
             [
                 'getValue' => Stub::consecutive('', 'val2'),
             ]
@@ -99,7 +99,7 @@ class ConfirmationOfTest extends \Codeception\Test\Unit
     public function testValidateNotAllowEmpty()
     {
         $validation = Stub::make(
-            'Phalcon\Validation',
+            'Phalcon\Filter\Validation',
             [
                 'getValue'      => Stub::consecutive('', 'val2'),
             ]
@@ -120,7 +120,7 @@ class ConfirmationOfTest extends \Codeception\Test\Unit
     public function testValidateInvalidValue()
     {
         $validation = Stub::make(
-            'Phalcon\Validation',
+            'Phalcon\Filter\Validation',
             [
                 'getValue'      => ['value', 'value'],
             ]

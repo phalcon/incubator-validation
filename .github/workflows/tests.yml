@@ -8,22 +8,25 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_USER: phalcon
+          MYSQL_ROOT_PASSWORD: password
+          DATA_MYSQL_USER: root
+          DATA_MYSQL_NAME: phalcon
+          DATA_MYSQL_PASS: secret
+          DATA_MYSQL_HOST: "127.0.0.1"
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
           MYSQL_DATABASE: phalcon
-          MYSQL_PASSWORD: secret
         ports:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     name: PHP ${{ matrix.php-versions }}
     runs-on: ubuntu-latest
     env:
-      extensions: mbstring, intl, json, phalcon4, xdebug
+      extensions: mbstring, intl, json, phalcon-5.0.0beta, xdebug
       key: cache-v0.0.2
     strategy:
       fail-fast: false
       matrix:
-        php-versions: ['7.2', '7.3', '7.4']
+        php-versions: ["7.4", "8.0"]
     steps:
       - uses: actions/checkout@v1
 

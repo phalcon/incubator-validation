@@ -3,22 +3,22 @@
 namespace Phalcon\Incubator\Validation;
 
 use Phalcon\Messages\Message;
-use Phalcon\Validation\AbstractValidator;
-use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Filter\Validation\AbstractValidator;
+use Phalcon\Filter\Validation\ValidatorInterface;
+use Phalcon\Filter\Validation;
 
 class ArrayInclusionIn extends AbstractValidator implements ValidatorInterface
 {
-
     /**
      * Executes the validation
      *
-     * @param \Phalcon\Validation $validator
+     * @param Validation $validator
      * @param string              $attribute
      *
      * @return bool
      *
      */
-    public function validate(\Phalcon\Validation $validator, $attribute): bool
+    public function validate(Validation $validator, $attribute): bool
     {
         $array = $validator->getValue($attribute);
         $domain = $this->getOption('domain');

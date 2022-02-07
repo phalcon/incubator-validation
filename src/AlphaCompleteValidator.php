@@ -2,10 +2,10 @@
 
 namespace Phalcon\Incubator\Validation;
 
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 use Phalcon\Messages\Message;
-use Phalcon\Validation\AbstractValidator;
-use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Filter\Validation\AbstractValidator;
+use Phalcon\Filter\Validation\ValidatorInterface;
 
 class AlphaCompleteValidator extends AbstractValidator implements ValidatorInterface
 {
@@ -19,7 +19,7 @@ class AlphaCompleteValidator extends AbstractValidator implements ValidatorInter
      *
      * @return boolean
      */
-    public function validate(\Phalcon\Validation $validator, $attribute): bool
+    public function validate(Validation $validator, $attribute): bool
     {
         $value = $validator->getValue($attribute);
 

@@ -20,12 +20,12 @@
 namespace Phalcon\Incubator\Validation;
 
 use MongoId as Id;
-use Phalcon\Validation;
-use Phalcon\Validation\AbstractValidator;
-use Phalcon\Validation\Validator;
+use Phalcon\Filter\Validation;
+use Phalcon\Filter\Validation\AbstractValidator;
+use Phalcon\Filter\Validation\Validator;
 use Phalcon\Messages\Message;
-use Phalcon\Validation\Exception as ValidationException;
-use Phalcon\Validation\ValidatorInterface;
+use Phalcon\Filter\Validation\Exception as ValidationException;
+use Phalcon\Filter\Validation\ValidatorInterface;
 
 /**
  * MongoId validator

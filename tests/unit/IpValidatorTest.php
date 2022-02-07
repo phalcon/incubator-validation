@@ -3,7 +3,7 @@
 namespace Phalcon\Incubator\Validation\Tests\Unit;
 
 use Phalcon\Incubator\Validation\IpValidator;
-use Phalcon\Validation;
+use Phalcon\Filter\Validation;
 
 /**
  * \Phalcon\Test\Validation\Validator\IpValidatorTest
