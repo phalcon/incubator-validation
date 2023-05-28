@@ -40,7 +40,6 @@ use Phalcon\Messages\Message;
  */
 class ConfirmationOf extends AbstractValidator implements ValidatorInterface
 {
-
     /**
      * Value validation
      *
